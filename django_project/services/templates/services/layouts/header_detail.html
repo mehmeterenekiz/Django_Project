@@ -1,0 +1,11 @@
+{% load static %}
+<header id="header">
+    <a href="{% url 'index' %}" class="title">Hyperspace</a>
+    <nav>
+      <ul>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'service_list' %}">Services</a></li>
+        <li><a href="{% url 'service_detail' service.slug %}" class="active">{{service.title}}</a></li>
+      </ul>
+    </nav>
+  </header>

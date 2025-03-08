@@ -1,0 +1,16 @@
+{% extends "services/base_detail.html" %} 
+{% load static %} 
+{% block title %} {{service.title}} {% endblock %} 
+
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+  <div class="inner">
+    <h1 class="major">{{service.title}}</h1>
+    <span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
+    <p>
+      {{service.description}}
+    </p>
+  </div>
+</section>
+{% endblock content %}

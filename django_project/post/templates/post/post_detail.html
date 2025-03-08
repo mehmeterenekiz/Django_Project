@@ -1,0 +1,16 @@
+{% extends "post/base_detail.html" %} 
+{% load static %} 
+{% block title %} {{post.title}} {% endblock %} 
+
+{% block content %}
+<!-- Main -->
+<section id="main" class="wrapper">
+  <div class="inner">
+    <h1 class="major">{{post.title}}</h1>
+    <span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
+    <p>
+      {{post.content}}
+    </p>
+  </div>
+</section>
+{% endblock content %}

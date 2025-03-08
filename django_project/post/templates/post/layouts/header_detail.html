@@ -1,0 +1,11 @@
+{% load static %}
+<header id="header">
+    <a href="{% url 'index' %}" class="title">Django Project</a>
+    <nav>
+      <ul>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'post_list' %}">Posts</a></li>
+        <li><a href="{% url 'post_detail' post.slug %}" class="active">{{post.title}}</a></li>
+      </ul>
+    </nav>
+  </header> 
