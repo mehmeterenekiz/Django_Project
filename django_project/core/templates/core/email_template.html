@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .message {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border: 1px solid #dddddd;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Django Project - İletişim</h2>
+        </div>
+        <div class="message">
+            <p>Merhaba <strong>{{ name }}</strong>,</p>
+            <p>Mesajınızı aldık! En kısa süre içerisinde size geri dönüş yapacağız.</p>
+            <p><strong>Gönderilen Mesaj:</strong></p>
+            <p>{{ message }}</p>
+        </div>
+        <div class="footer">
+            <p>Teşekkürler,</p>
+            <p>Django Project Ekibi</p>
+        </div>
+    </div>
+</body>
+</html>

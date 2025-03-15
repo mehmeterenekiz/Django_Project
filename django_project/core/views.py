@@ -35,21 +35,11 @@ def index(request):
 
     return render(request, 'core/index.html', context)
 
-from django.shortcuts import redirect
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.core.mail import send_mail
-from django.contrib import messages
-from django.conf import settings
 
-from django.shortcuts import redirect
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.core.mail import send_mail
-from django.contrib import messages
-from django.conf import settings
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 def contact(request):
     if request.method == 'POST':
@@ -71,8 +61,29 @@ def contact(request):
         message_body = f"Message from {name} - {email}: \n\n {message}"
         recipient_list = [settings.EMAIL_HOST_USER]
 
-        try: 
-            send_mail(subject, message_body, email, recipient_list)
+        # HTML tabanlı e-posta içeriği
+        html_message = render_to_string('core/email_template.html', {
+            'name': name,
+            'message': message
+        })
+        plain_message = strip_tags(html_message)
+
+        try:
+            # Kullanıcıya e-posta gönder
+            send_mail(
+                subject,
+                plain_message,  # Düz metin içeriği (HTML desteği olmayan e-posta istemcileri için)
+                settings.EMAIL_HOST_USER,
+                [email],
+                html_message=html_message  # HTML içeriği
+            )
+            # Kendi adresine e-posta gönder
+            send_mail(
+                subject,
+                message_body,
+                settings.EMAIL_HOST_USER,
+                recipient_list
+            )
         except Exception:
             messages.error(request, "Something went wrong. Please try again later.")
         else:
