@@ -108,19 +108,16 @@ project - index {% endblock title %} {% block content %}
         <ul class="contact">
           <li>
             <h3>Address</h3>
-            <span
-              >12345 Somewhere Road #654<br />
-              Nashville, TN 00000-0000<br />
-              USA</span
+            <span> {{ social_medias.adress }} </span
             >
           </li>
           <li>
             <h3>Email</h3>
-            <a href="#">user@untitled.tld</a>
+            <a href="#">{{ social_medias.email }}</a>
           </li>
           <li>
             <h3>Phone</h3>
-            <span>(000) 000-0000</span>
+            <span>{{ social_medias.phone }}</span>
           </li>
           <li>
             <h3>Social</h3>
@@ -136,17 +133,17 @@ project - index {% endblock title %} {% block content %}
                 >
               </li>
               <li>
-                <a href="#" class="icon brands fa-github"
+                <a href="{{ social_medias.github }}" class="icon brands fa-github"
                   ><span class="label">GitHub</span></a
                 >
               </li>
               <li>
-                <a href="#" class="icon brands fa-instagram"
+                <a href="{{ social_medias.instagram }}" class="icon brands fa-instagram"
                   ><span class="label">Instagram</span></a
                 >
               </li>
               <li>
-                <a href="#" class="icon brands fa-linkedin-in"
+                <a href="{{ social_medias.linkedin }}" class="icon brands fa-linkedin-in"
                   ><span class="label">LinkedIn</span></a
                 >
               </li>

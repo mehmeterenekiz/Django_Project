@@ -1,45 +1,44 @@
 from django.shortcuts import render
 from services.models import Service
 from post.models import Post
+from core.models import Social
 from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 def index(request):
     
     static_content = """
         <div class="inner">
-        <h1>Hyperspace</h1>
+        <h1>Django Project</h1>
         <p>
-        Just another fine responsive site template designed by
-        <a href="http://html5up.net">HTML5 UP</a><br />
-        and released for free under the
-        <a href="http://html5up.net/license">Creative Commons</a>.
+        Hi There, I am Mehmet Eren Ekiz. I am Computer Science and Engineering student at Istanbul Medeniyet University.
+        I am interested in web backend development. That is why I am currently learning ASP.net, Django and PHP. I developed 
+        a django project for reinforce my django skills and I aim to take the experiences I gained in this process even further..
         </p>
         <ul class="actions">
         <li><a href="#one" class="button scrolly">Learn more</a></li>
         </ul>
     </div>
     """
-
     featured_services = Service.objects.filter(is_featured=True)
     latest_posts = Post.objects.all()[:3]
+    social_medias = Social.objects.first();
 
     context = {
         "static_content": static_content,
         "featured_services": featured_services,
         "latest_posts": latest_posts,
+        "social_medias": social_medias,
     }
 
     return render(request, 'core/index.html', context)
-
-
-from django.core.validators import validate_email
-from django.core.exceptions import ValidationError
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
 
 def contact(request):
     if request.method == 'POST':
